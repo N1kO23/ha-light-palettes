@@ -1,0 +1,14 @@
+{
+  "domain": "light_palettes",
+  "name": "Light Palettes",
+  "after_dependencies": ["mqtt"],
+  "codeowners": ["@N1kO23"],
+  "config_flow": true,
+  "documentation": "https://github.com/N1kO23/ha-light-palettes",
+  "integration_type": "service",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/N1kO23/ha-light-palettes/issues",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "0.1.0"
+}

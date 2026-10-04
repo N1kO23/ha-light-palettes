@@ -1,0 +1,17 @@
+{
+  "entity": {
+    "switch": {
+      "effect": {
+        "default": "mdi:palette",
+        "state": { "off": "mdi:palette-outline" }
+      }
+    },
+    "select": {
+      "palette": { "default": "mdi:palette-swatch-variant" }
+    },
+    "number": {
+      "step": { "default": "mdi:timer-sand" },
+      "jitter": { "default": "mdi:shuffle-variant" }
+    }
+  }
+}

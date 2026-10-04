@@ -1,0 +1,129 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Light Palettes",
+        "description": "Slow, smooth colour-palette effects for your lights. After setup, add palettes and effects from the integration page.",
+        "data": {
+          "starter_palettes": "Add a few starter palettes"
+        },
+        "data_description": {
+          "starter_palettes": "Sunset, Ocean, Aurora and Embers. You can edit or delete them later."
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Light Palettes is already set up. Add palettes and effects from its integration page."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Light Palettes options",
+        "data": {
+          "topic_overrides": "OpenBeken MQTT topic overrides",
+          "soft_fade_interval": "Software fade step"
+        },
+        "data_description": {
+          "topic_overrides": "Usually empty. OpenBeken bulbs are found automatically and their topic is taken from the device name. Add a line like light.desk_lamp=obk_desk only if a bulb's MQTT client topic differs from its short name, or to force a light to be treated as OpenBeken.",
+          "soft_fade_interval": "For lights that support neither OpenBeken nor transitions, fades are made of small colour steps this far apart. Shorter is smoother but sends more commands."
+        }
+      }
+    },
+    "error": {
+      "bad_override": "Every line must look like light.entity_id=topic, with no spaces in the topic."
+    }
+  },
+  "config_subentries": {
+    "palette": {
+      "entry_type": "Palette",
+      "initiate_flow": {
+        "user": "Add palette",
+        "reconfigure": "Edit palette"
+      },
+      "step": {
+        "details": {
+          "title": "Palette",
+          "data": {
+            "name": "Name",
+            "color_count": "Number of colours"
+          },
+          "data_description": {
+            "color_count": "You'll pick the colours on the next page."
+          }
+        },
+        "colors": {
+          "title": "Colours for {name}",
+          "description": "The effect fades through these in order, then starts over from the first one. Neighbouring colours that are close in hue give the smoothest fades.",
+          "data": {
+            "color_1": "Colour 1",
+            "color_2": "Colour 2",
+            "color_3": "Colour 3",
+            "color_4": "Colour 4",
+            "color_5": "Colour 5",
+            "color_6": "Colour 6",
+            "color_7": "Colour 7",
+            "color_8": "Colour 8"
+          }
+        }
+      },
+      "error": {
+        "name_required": "Give the palette a name.",
+        "name_taken": "There's already a palette with this name."
+      },
+      "abort": {
+        "reconfigure_successful": "Palette saved."
+      }
+    },
+    "effect": {
+      "entry_type": "Effect",
+      "initiate_flow": {
+        "user": "Add effect",
+        "reconfigure": "Edit effect"
+      },
+      "step": {
+        "effect": {
+          "title": "Effect",
+          "data": {
+            "name": "Name",
+            "lights": "Lights",
+            "palette": "Palette",
+            "step": "Seconds per colour",
+            "jitter": "Timing randomness",
+            "stagger": "Spread lights across the palette"
+          },
+          "data_description": {
+            "lights": "Bulbs or light groups. Groups are expanded and every bulb gets its own loop. A light can only follow one running effect: starting another effect that uses it takes it over.",
+            "step": "How long each fade takes before the next colour starts.",
+            "jitter": "Each light varies every fade by up to this much, independently of the others, so the lights drift out of step. 0 keeps them in lockstep.",
+            "stagger": "Start each light at a different colour of the palette instead of all on the first one."
+          }
+        }
+      },
+      "error": {
+        "name_required": "Give the effect a name.",
+        "name_taken": "There's already an effect with this name.",
+        "no_lights": "Pick at least one light."
+      },
+      "abort": {
+        "no_palettes": "Add a palette first.",
+        "reconfigure_successful": "Effect saved."
+      }
+    }
+  },
+  "entity": {
+    "select": {
+      "palette": {
+        "name": "Palette"
+      }
+    },
+    "number": {
+      "step": {
+        "name": "Seconds per colour"
+      },
+      "jitter": {
+        "name": "Timing randomness"
+      }
+    }
+  }
+}
